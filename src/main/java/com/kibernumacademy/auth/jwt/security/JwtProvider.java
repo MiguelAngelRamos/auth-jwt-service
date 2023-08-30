@@ -1,6 +1,7 @@
 package com.kibernumacademy.auth.jwt.security;
 
 import com.kibernumacademy.auth.jwt.entity.AuthUser;
+import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Value;
 import io.jsonwebtoken.Jwts;
@@ -22,7 +23,7 @@ public class JwtProvider {
     Date expirationToken = new Date(now.getTime() + 3600000);
     return Jwts.builder()
             .setClaims(claims)
-            .setIssueAt(now)
+            .setIssuedAt(now)
             .setExpiration(expirationToken)
             .signWith(SignatureAlgorithm.HS256, secret)
             .compact();
