@@ -26,6 +26,8 @@ public class AuthController {
     }
     return ResponseEntity.ok(authUser);
   }
+
+  @PostMapping("/login")
   public ResponseEntity<TokenDto> login(@RequestBody AuthUserDto authUserDto) {
     TokenDto tokenDto = authService.login(authUserDto);
     if(tokenDto == null) {
